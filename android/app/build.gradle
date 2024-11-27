@@ -1,0 +1,47 @@
+plugins {
+    id "com.android.application"
+    id 'com.google.gms.google-services'
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.fooddelivery.app" // El namespace de tu app
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // Especifica tu propio Application ID (el id único de tu app).
+        applicationId = "com.fooddelivery.app"  // Asegúrate de que esto sea único y coincida con el namespace
+        minSdkVersion 23  // Actualiza la versión mínima de SDK a 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // Configuración de ProGuard para minimizar y ofuscar el código
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+flutter {
+    source = "../.." // Ruta de los archivos fuente de Flutter
+}
+
+
+
+
